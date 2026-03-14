@@ -8,6 +8,16 @@ This project serves as a **minimum viable SaaS prototype** that can be expanded 
 
 ---
 
+## Platform Preview
+
+### Buyer Intake Form
+![Buyer Intake](screenshots/index.png)
+
+### CRM Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+---
+
 # Core Features
 
 ### Contractor Buyer Intake Portal
@@ -29,15 +39,16 @@ Submissions capture service type, geographic market, and service radius.
 
 # Technology Stack
 
-- **Frontend:** HTML, CSS, JavaScript
-- **Backend:** FastAPI (Python)
-- **Data Storage:** JSON file (prototype storage)
-- **API Layer:** REST endpoints
-- **Dashboard:** Client-side rendering via API
+- **Frontend:** HTML, CSS, JavaScript  
+- **Backend:** FastAPI (Python)  
+- **Data Storage:** JSON file (prototype storage)  
+- **API Layer:** REST endpoints  
+- **Dashboard:** Client-side rendering via API  
 
 ---
 
 # Project Structure
+
 ConstraCRM
 │
 ├── backend
@@ -48,14 +59,20 @@ ConstraCRM
 │ ├── index.html
 │ └── dashboard.html
 │
+├── screenshots
+│ ├── dashboard.png
+│ └── index.png
+│
 └── README.md
+
 ---
 
 # Running the Application
 
-### 1. Start the backend server
+## 1. Start the backend server
 
 Navigate to the backend directory and run:
 
 ```powershell
+cd backend
 python -m uvicorn main:app --reload
