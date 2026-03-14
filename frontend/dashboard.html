@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ConstraCRM Admin Dashboard</title>
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background:#0f172a;
+      color:white;
+      margin:0;
+      padding:40px;
+    }
+    .container{
+      max-width:1100px;
+      margin:auto;
+    }
+    .eyebrow{
+      display:inline-block;
+      background:#1e293b;
+      color:#f97316;
+      border:1px solid #334155;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:bold;
+      margin-bottom:12px;
+    }
+    h1{
+      margin-top:0;
+      margin-bottom:8px;
+      font-size:38px;
+    }
+    h2{
+      margin-top:0;
+      margin-bottom:8px;
+    }
+    p{
+      color:#cbd5e1;
+      line-height:1.6;
+    }
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      margin-bottom:24px;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .button{
+      display:inline-block;
+      background:#f97316;
+      color:white;
+      text-decoration:none;
+      padding:10px 16px;
+      border-radius:8px;
+      font-weight:bold;
+    }
+    .button:hover{
+      opacity:.95;
+    }
+    .summary{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      gap:14px;
+      margin-bottom:20px;
+    }
+    .summary-box{
+      background:#111827;
+      border:1px solid #334155;
+      border-radius:12px;
+      padding:16px;
+    }
+    .summary-label{
+      color:#94a3b8;
+      font-size:12px;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+    .summary-value{
+      font-size:28px;
+      font-weight:bold;
+    }
+    .card{
+      background:#111827;
+      border:1px solid #334155;
+      border-radius:12px;
+      padding:20px;
+      margin-top:16px;
+    }
+    .meta{
+      color:#94a3b8;
+      font-size:14px;
+      margin-top:6px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:10px;
+      margin-top:14px;
+    }
+    .field{
+      background:#0b1220;
+      border:1px solid #243041;
+      border-radius:8px;
+      padding:10px;
+    }
+    .label{
+      color:#94a3b8;
+      font-size:12px;
+      text-transform:uppercase;
+      margin-bottom:6px;
+    }
+    .empty{
+      background:#111827;
+      border:1px dashed #475569;
+      border-radius:12px;
+      padding:20px;
+      color:#cbd5e1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">ConstraCRM Admin Panel</div>
+        <h1>Buyer Intake Pipeline</h1>
+        <p>
+          Review incoming contractor buyer inquiries, organize demand by market and lead type,
+          and monitor submissions captured through the ConstraCRM intake workflow.
+        </p>
+      </div>
+      <a class="button" href="index.html">Open Buyer Intake Portal</a>
+    </div>
+
+    <div class="summary">
+      <div class="summary-box">
+        <div class="summary-label">Platform</div>
+        <div class="summary-value">ConstraCRM</div>
+      </div>
+      <div class="summary-box">
+        <div class="summary-label">Pipeline Status</div>
+        <div class="summary-value">Live</div>
+      </div>
+      <div class="summary-box">
+        <div class="summary-label">Stored Inquiries</div>
+        <div class="summary-value" id="inquiryCount">0</div>
+      </div>
+    </div>
+
+    <div id="results"></div>
+  </div>
+
+  <script>
+    async function loadInquiries() {
+      const results = document.getElementById("results");
+      const inquiryCount = document.getElementById("inquiryCount");
+
+      try {
+        const response = await fetch("http://127.0.0.1:8000/api/inquiries");
+        if (!response.ok) {
+          throw new Error("Could not load inquiries.");
+        }
+
+        const inquiries = await response.json();
+        inquiryCount.textContent = inquiries.length;
+
+        if (!inquiries.length) {
+          results.innerHTML = '<div class="empty">No inquiries in the pipeline yet.</div>';
+          return;
+        }
+
+        const cards = inquiries.slice().reverse().map(inquiry => {
+          return `
+            <div class="card">
+              <h2>${inquiry.companyName || "Unknown Company"}</h2>
+              <div class="meta">Lead ID: ${inquiry.id || "N/A"}</div>
+              <div class="meta">Received: ${inquiry.receivedAt || "N/A"}</div>
+
+              <div class="grid">
+                <div class="field">
+                  <div class="label">Contact Name</div>
+                  <div>${inquiry.contactName || ""}</div>
+                </div>
+                <div class="field">
+                  <div class="label">Email</div>
+                  <div>${inquiry.email || ""}</div>
+                </div>
+                <div class="field">
+                  <div class="label">Phone</div>
+                  <div>${inquiry.phone || ""}</div>
+                </div>
+                <div class="field">
+                  <div class="label">Lead Type</div>
+                  <div>${inquiry.leadType || ""}</div>
+                </div>
+                <div class="field">
+                  <div class="label">Target Market</div>
+                  <div>${inquiry.targetMarket || ""}</div>
+                </div>
+                <div class="field">
+                  <div class="label">Service Radius</div>
+                  <div>${inquiry.serviceRadius || ""}</div>
+                </div>
+                <div class="field">
+                  <div class="label">Monthly Volume</div>
+                  <div>${inquiry.monthlyVolume || ""}</div>
+                </div>
+              </div>
+
+              <div class="field" style="margin-top:12px;">
+                <div class="label">Notes</div>
+                <div>${inquiry.notes || ""}</div>
+              </div>
+            </div>
+          `;
+        });
+
+        results.innerHTML = cards.join("");
+      } catch (error) {
+        inquiryCount.textContent = "0";
+        results.innerHTML = `<div class="empty">Error loading dashboard: ${error.message}</div>`;
+      }
+    }
+
+    loadInquiries();
+  </script>
+</body>
+</html>

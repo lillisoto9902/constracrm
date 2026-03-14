@@ -1,0 +1,41 @@
+[
+  {
+    "companyName": "Jack",
+    "contactName": "Jill",
+    "email": "jill@jack.com",
+    "phone": "5555554444",
+    "leadType": "General Contractor Leads",
+    "targetMarket": "Florida",
+    "serviceRadius": "30 miles",
+    "monthlyVolume": "30",
+    "notes": "Test contractor lead",
+    "id": "example-lead-1",
+    "receivedAt": "2026-03-14T07:10:55"
+  },
+  {
+    "companyName": "Sunshine Contractors",
+    "contactName": "Carlos Rivera",
+    "email": "carlos@sunshinecontractors.com",
+    "phone": "3055552211",
+    "leadType": "General Contractor Leads",
+    "targetMarket": "Florida",
+    "serviceRadius": "25 miles",
+    "monthlyVolume": "20",
+    "notes": "Looking for residential remodeling leads",
+    "id": "example-lead-2",
+    "receivedAt": "2026-03-14T07:33:50"
+  },
+  {
+    "companyName": "Elite Build Group",
+    "contactName": "Monica Hayes",
+    "email": "monica@elitebuildgroup.com",
+    "phone": "4075558899",
+    "leadType": "Commercial Contractor Leads",
+    "targetMarket": "Orlando",
+    "serviceRadius": "50 miles",
+    "monthlyVolume": "15",
+    "notes": "Interested in commercial renovation opportunities",
+    "id": "example-lead-3",
+    "receivedAt": "2026-03-14T07:45:10"
+  }
+]
