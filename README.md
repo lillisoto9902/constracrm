@@ -18,6 +18,24 @@ This project serves as a **minimum viable SaaS prototype** that can be expanded 
 
 ---
 
+# Product Overview
+
+ConstraCRM is designed as a **Contractor Lead Marketplace Starter Kit**.
+
+This project can be used by:
+
+- Lead generation agencies
+- Contractor networks
+- Marketing firms selling contractor leads
+- Service marketplaces
+- Growth agencies building CRM workflows
+
+ConstraCRM captures buyer demand, organizes contractor lead requests, and routes inquiries into a lightweight CRM intake pipeline.
+
+The platform is intentionally simple so it can be easily customized, expanded, or integrated into larger SaaS systems.
+
+---
+
 # Core Features
 
 ### Contractor Buyer Intake Portal
