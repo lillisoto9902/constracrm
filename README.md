@@ -67,6 +67,7 @@ Submissions capture service type, geographic market, and service radius.
 
 # Project Structure
 
+
 ConstraCRM
 │
 ├── backend
@@ -83,6 +84,7 @@ ConstraCRM
 │
 └── README.md
 
+
 ---
 
 # Running the Application
@@ -91,6 +93,111 @@ ConstraCRM
 
 Navigate to the backend directory and run:
 
-```powershell
+
 cd backend
 python -m uvicorn main:app --reload
+
+
+The API will start at:
+
+
+http://127.0.0.1:8000
+
+
+---
+
+## 2. Open the frontend
+
+Open the intake form:
+
+
+frontend/index.html
+
+
+Open the dashboard:
+
+
+frontend/dashboard.html
+
+
+---
+
+# Quick Setup Guide
+
+1. Clone the repository
+
+
+git clone https://github.com/lillisoto9902/constracrm
+
+
+2. Navigate to the backend folder
+
+
+cd constracrm/backend
+
+
+3. Install dependencies
+
+
+pip install fastapi uvicorn
+
+
+4. Start the API server
+
+
+python -m uvicorn main:app --reload
+
+
+5. Open the frontend
+
+
+frontend/index.html
+
+
+The intake form will submit contractor inquiries into the FastAPI backend and store them in the CRM pipeline.
+
+---
+
+# API Endpoints
+
+### Submit Buyer Inquiry
+
+
+POST /api/buyer-inquiry
+
+
+Stores contractor lead requests.
+
+### Retrieve Inquiries
+
+
+GET /api/inquiries
+
+
+Returns all stored buyer inquiries.
+
+---
+
+# Commercial Use
+
+ConstraCRM can be used as the foundation for:
+
+- Contractor lead marketplaces
+- CRM intake systems
+- Lead broker platforms
+- Marketing agency dashboards
+
+The system is intentionally lightweight so it can be extended with:
+
+- user authentication
+- email notifications
+- Stripe billing
+- lead routing automation
+- database storage
+- multi-tenant SaaS architecture
+
+---
+
+# License
+
+This project is provided as a **SaaS prototype starter platform** and may be extended or customize
