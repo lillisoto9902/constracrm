@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ConstraCRM - Contractor Lead Marketplace SaaS</title>
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background:#0f172a;
+      color:white;
+      padding:40px;
+      margin:0;
+    }
+    .container{
+      max-width:900px;
+      margin:auto;
+    }
+    .hero{
+      margin-bottom:20px;
+    }
+    .eyebrow{
+      display:inline-block;
+      background:#1e293b;
+      color:#f97316;
+      border:1px solid #334155;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:bold;
+      margin-bottom:14px;
+    }
+    .card{
+      background:#111827;
+      padding:25px;
+      border-radius:12px;
+      margin-top:20px;
+      border:1px solid #334155;
+    }
+    h1,h2,h3{
+      margin-top:0;
+    }
+    h1{
+      font-size:42px;
+      margin-bottom:12px;
+    }
+    h2{
+      font-size:28px;
+      margin-bottom:10px;
+    }
+    h3{
+      font-size:20px;
+      margin-bottom:10px;
+    }
+    p{
+      color:#cbd5e1;
+      line-height:1.6;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      gap:16px;
+      margin-top:18px;
+    }
+    .feature-box{
+      background:#0b1220;
+      border:1px solid #243041;
+      border-radius:10px;
+      padding:16px;
+    }
+    .feature-box p{
+      margin:0;
+      font-size:14px;
+    }
+    input,select,textarea,button{
+      width:100%;
+      padding:12px;
+      margin-top:10px;
+      border-radius:8px;
+      box-sizing:border-box;
+      font-size:16px;
+    }
+    input,select,textarea{
+      background:#0f172a;
+      color:white;
+      border:1px solid #475569;
+    }
+    button{
+      background:#f97316;
+      color:white;
+      font-weight:bold;
+      border:none;
+      cursor:pointer;
+    }
+    button:hover{
+      opacity:.95;
+    }
+    #message{
+      margin-top:15px;
+    }
+    .success{
+      background:#14532d;
+      border:1px solid #22c55e;
+      padding:12px;
+      border-radius:8px;
+      color:white;
+    }
+    .error{
+      background:#7f1d1d;
+      border:1px solid #ef4444;
+      padding:12px;
+      border-radius:8px;
+      color:white;
+    }
+    .small-note{
+      font-size:14px;
+      color:#94a3b8;
+      margin-top:12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="eyebrow">CRM-Powered Lead Intake Platform</div>
+      <h1>ConstraCRM</h1>
+      <p><strong>Contractor Lead Marketplace SaaS</strong></p>
+      <p>
+        ConstraCRM is a contractor lead marketplace and buyer management platform built for lead sellers,
+        contractor networks, and growth-focused service businesses. Capture demand, organize buyer requests,
+        and route contractor inquiries into a CRM-powered intake workflow.
+      </p>
+    </div>
 
+    <div class="card">
+      <h2>Why ConstraCRM</h2>
+      <div class="grid">
+        <div class="feature-box">
+          <h3>Lead Intake</h3>
+          <p>Capture contractor buyer requests through a clean intake portal built for scalable lead operations.</p>
+        </div>
+        <div class="feature-box">
+          <h3>CRM Workflow</h3>
+          <p>Route every submission into a structured pipeline for review, qualification, and follow-up.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Market Filtering</h3>
+          <p>Organize inquiries by trade, target market, and service radius for smarter lead distribution.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Buyer Intake Portal</h2>
+      <p>
+        Request access to contractor leads by submitting your company information, preferred service category,
+        target market, and delivery preferences. Your request will be added to the ConstraCRM pipeline for review.
+      </p>
+
+      <form id="leadForm">
+        <input name="companyName" placeholder="Company Name" required>
+        <input name="contactName" placeholder="Contact Name" required>
+        <input name="email" type="email" placeholder="Email Address" required>
+        <input name="phone" placeholder="Phone Number" required>
+
+        <select name="leadType" required>
+          <option value="General Contractor Leads">General Contractor Leads</option>
+          <option value="Kitchen Remodeling Leads">Kitchen Remodeling Leads</option>
+          <option value="Bathroom Remodeling Leads">Bathroom Remodeling Leads</option>
+          <option value="Home Addition Leads">Home Addition Leads</option>
+          <option value="Concrete & Masonry Leads">Concrete & Masonry Leads</option>
+          <option value="Exterior Renovation Leads">Exterior Renovation Leads</option>
+          <option value="Commercial Contractor Leads">Commercial Contractor Leads</option>
+        </select>
+
+        <select name="targetMarket" required>
+          <option value="Florida">Florida</option>
+          <option value="Miami">Miami</option>
+          <option value="Tampa">Tampa</option>
+          <option value="Orlando">Orlando</option>
+          <option value="Jacksonville">Jacksonville</option>
+        </select>
+
+        <select name="serviceRadius">
+          <option value="">Service Area Radius</option>
+          <option value="10 miles">10 miles</option>
+          <option value="25 miles">25 miles</option>
+          <option value="50 miles">50 miles</option>
+          <option value="Statewide">Statewide</option>
+        </select>
+
+        <input name="monthlyVolume" placeholder="Expected Monthly Volume">
+        <textarea name="notes" placeholder="Notes or lead preferences" rows="5"></textarea>
+
+        <button type="submit">Submit Request</button>
+      </form>
+
+      <div id="message"></div>
+
+      <p class="small-note">
+        Future SaaS upgrades can include email alerts, SMS notifications, login access, subscriptions,
+        territory routing, and database-backed lead management.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("leadForm").addEventListener("submit", async function(e){
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+
+      const payload = {
+        companyName: formData.get("companyName"),
+        contactName: formData.get("contactName"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        leadType: formData.get("leadType"),
+        targetMarket: formData.get("targetMarket"),
+        serviceRadius: formData.get("serviceRadius"),
+        monthlyVolume: formData.get("monthlyVolume"),
+        notes: formData.get("notes")
+      };
+
+      const messageBox = document.getElementById("message");
+      messageBox.innerHTML = "";
+
+      try {
+        const response = await fetch("http://127.0.0.1:8000/api/buyer-inquiry", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.detail ? JSON.stringify(data.detail) : "Submission failed");
+        }
+
+        messageBox.innerHTML = `<div class="success">Request submitted successfully. Your inquiry has been added to the ConstraCRM pipeline. Lead ID: ${data.leadID}</div>`;
+        form.reset();
+      } catch (error) {
+        messageBox.innerHTML = `<div class="error">Error: ${error.message}</div>`;
+      }
+    });
+  </script>
+</body>
+</html>
